@@ -5,7 +5,7 @@ id varchar2(50) unique not null,
 pw varchar2(50) not null,
 address varchar2(255),
 phone varchar2(30) not null,
-point long
+point number(10,2)
 );
 
 create table sale (
