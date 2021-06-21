@@ -9,7 +9,7 @@ point number(10,2)
 );
 
 create table sale (
-salecode integer primary key,
+salecode integer constraint sale_PK primary key,
 sname varchar2(50) not null,
 price integer not null,
 saledate date default sysdate,
