@@ -6,11 +6,10 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-public class MemberMain {
+public class Test {
 
 	public static void main(String[] args) {
-
-		
+		SaleManager sale = new SaleManager(SaleDao.getInstance());
 		MemberManager manager = new MemberManager(MemberDao.getInstance());
 		Scanner sc = new Scanner(System.in);
 		
@@ -42,6 +41,8 @@ public class MemberMain {
 			
 			switch (num) {
 			case 1:
+				sale.order();
+				sale.saleList();
 				break;
 			case 2:
 				break;

@@ -62,7 +62,7 @@ public class MemberManager {
 			System.out.println("■■■■■■■■■■■■■■■■■■■■■■고객 정보 리스트■■■■■■■■■■■■■■■■■■■■■■■");
 			System.out.println("아이디 \t 비밀번호 \t 이름 \t 전화번호 \t 주소 \t 포인트");
 			for (Member mem : list) {
-				System.out.printf("%s \t %s \t %s \t %s \t %s \t %s\n", mem.getId(), mem.getPw(), mem.getName(),
+				System.out.printf("%s \t %s \t %s \t %s \t %s \t %d\n", mem.getId(), mem.getPw(), mem.getName(),
 						mem.getPhone(), mem.getAddress(), mem.getPoint());
 			}
 			System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");

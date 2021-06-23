@@ -60,6 +60,7 @@ public class MemberDao {
 		return list;
 	}
 	
+	// 현재 로그인 아이디 리스트
 	ArrayList<Member> getList(Connection con, String currentId){
 		
 		ArrayList<Member> list = null;
