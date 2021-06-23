@@ -1,4 +1,4 @@
-package member;
+package Sale;
 
 public class Sale {
 	//메뉴 세팅하고 ->DB에 저장

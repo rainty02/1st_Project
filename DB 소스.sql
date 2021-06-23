@@ -77,3 +77,11 @@ insert into menu(menucode, mname, price) values (menu_sq.nextval, 'bagel', 2300)
 insert into menu(menucode, mname, price) values (menu_sq.nextval, 'cake', 4800);
 insert into menu(menucode, mname, price) values (menu_sq.nextval, 'cake', 4800);
 
+select * from menu;
+update menu set mname = 'americano' where mname = 'americano';
+update menu set mname = ?, price =? where menucode = ?;
+
+insert into menu(menucode, mname, price) values (menu_sq.nextval, carrotcake, 5300);
+delete from menu where menucode = 27;
+delete from menu where menucode = 1;
+rollback;

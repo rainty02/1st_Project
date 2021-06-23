@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
+import Sale.SaleDao;
+import Sale.SaleManager;
+
 public class Test {
 
 	public static void main(String[] args) {

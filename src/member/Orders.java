@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Sale.Sale;
+
 public class Orders {
 
 	static Scanner scanner = new Scanner(System.in);
@@ -175,8 +177,6 @@ public class Orders {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-
 
 	}
 }

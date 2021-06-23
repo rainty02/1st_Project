@@ -1,4 +1,4 @@
-package member;
+package Sale;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

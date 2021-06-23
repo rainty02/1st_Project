@@ -1,13 +1,29 @@
-package member;
+package Menu;
 
 public class Menu {
 
+	private int menuCode;
 	private String mname;
 	private int price;
 
+	public Menu(int menuCode, String mname, int price) {
+		this.menuCode = menuCode;
+		this.mname = mname;
+		this.price = price;
+	}
+	
 	public Menu(String mname, int price) {
 		this.mname = mname;
 		this.price = price;
+	}
+	
+	
+	public int getMenuCode() {
+		return menuCode;
+	}
+
+	public void setMenuCode(int menuCode) {
+		this.menuCode = menuCode;
 	}
 
 	public String getMname() {
@@ -26,8 +42,13 @@ public class Menu {
 		this.price = price;
 	}
 
+
+
+
 	@Override
 	public String toString() {
-		return "Admin [mname=" + mname + ", price=" + price + "]";
-	}	
+		return "Menu [menuCode=" + menuCode + ", mname=" + mname + ", price=" + price + "]";
+	}
+
+
 }

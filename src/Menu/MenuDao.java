@@ -1,4 +1,4 @@
-package member;
+package Menu;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,7 +30,7 @@ public class MenuDao {
 			list = new ArrayList<>();
 			
 			while(rs.next()) {
-				Menu menu = new Menu(rs.getString(2), rs.getInt(3));
+				Menu menu = new Menu(rs.getInt(1), rs.getString(2), rs.getInt(3));
 				list.add(menu);
 			}
 			
@@ -54,7 +54,7 @@ public class MenuDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
-		String sql = "insert into memu(menucode, mname, price) values (menu_sq.nextval, ?, ?)";
+		String sql = "insert into menu(menucode, mname, price) values (menu_sq.nextval, ?, ?)";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, menu.getMname());
@@ -76,16 +76,16 @@ public class MenuDao {
 	}
 	
 	// 3. 메뉴 데이터 수정
-	int editMenu(Connection con, Menu menu, String mname) {
+	int editMenu(Connection con, Menu menu) {
 		int result = 0;		
 		PreparedStatement pstmt = null;
 		
-		String sql = "update menu set mname = ?, price =? where mname = ?";
+		String sql = "update menu set mname = ?, price =? where menucode = ?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, menu.getMname());
 			pstmt.setInt(2, menu.getPrice());
-			pstmt.setString(3, mname);
+			pstmt.setInt(3, menu.getMenuCode());
 		
 			result = pstmt.executeUpdate();
 			
@@ -104,14 +104,17 @@ public class MenuDao {
 	}
 	
 	// 4. 메뉴 데이터 삭제
-	int deleteMenu(Connection con, String mname) {
+	int deleteMenu(Connection con, int menuCode) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
 		try {	
-			String sql = "delete from menu where mname = ?";
+			String sql = "delete from menu where menucode = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, mname);
+			pstmt.setInt(1, menuCode);
+			
+			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

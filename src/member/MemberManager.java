@@ -31,7 +31,7 @@ public class MemberManager {
 		this.currentId = currentId;
 	}
 
-	// 전체 리스트 출력
+	// 전체 리스트 출력 - 관리자용
 	void memList() {
 
 		try {
@@ -42,7 +42,7 @@ public class MemberManager {
 			System.out.println("■■■■■■■■■■■■■■■■■■■■■■고객 정보 리스트■■■■■■■■■■■■■■■■■■■■■■■");
 			System.out.println("멤버코드 \t 아이디 \t 비밀번호 \t 이름 \t 전화번호 \t 주소 \t 포인트");
 			for (Member mem : list) {
-				System.out.printf("%d \t %s \t %s \t %s \t %s \t %s \t %f \n", mem.getMemcode(), mem.getId(),
+				System.out.printf("%d \t %s \t %s \t %s \t %s \t %s \t %d \n", mem.getMemcode(), mem.getId(),
 						mem.getPw(), mem.getName(), mem.getPhone(), mem.getAddress(), mem.getPoint());
 			}
 			System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
@@ -76,7 +76,7 @@ public class MemberManager {
 
 		try {
 			con = DriverManager.getConnection(jdbcUrl, user, pw);
-			System.out.println("환영합니다");
+			System.out.println("환영합니다.");
 
 			// System.out.print("아이디를 입력하세요 > ");
 			// String id = sc.nextLine();
@@ -113,11 +113,11 @@ public class MemberManager {
 
 		try {
 			con = DriverManager.getConnection(jdbcUrl, user, pw);
-
+ 
 			System.out.println("회원 정보를 수정합니다.");
 			System.out.print("이름를 입력하세요 > ");
 			String cafename = sc.nextLine().trim();
-			System.out.print("비밀번호를 입력하세요 >");
+			System.out.print("비밀번호를 입력하세요 > ");
 			String password = sc.nextLine().trim();
 			System.out.print("주소를 입력하세요 > ");
 			String address = sc.nextLine().trim();
@@ -156,7 +156,6 @@ public class MemberManager {
 					System.out.println("오류가 발생하여 탈퇴실패하였습니다.");
 				}
 			}
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -227,33 +226,4 @@ public class MemberManager {
 		}
 		return id;
 	}
-
-	// 가입, 로그인 관련
-	// boolean chkId(String id) {
-	//
-	// boolean chkId = true;
-	// // connection 객체 생성
-	// Connection con = null;
-	//
-	// // 연결
-	// String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-	// String user = "hr";
-	// String pw = "tiger";
-	//
-	// try {
-	// con = DriverManager.getConnection(jdbcUrl, user, pw);
-	// List<Member> list = dao.getList(con);
-	// for(Member mem : list) {
-	// if (mem.getId().equals(id)) {
-	// System.out.println("중복된 아이디입니다.");
-	// System.out.println("다시 입력해주세요.");
-	// chkId = false;
-	// break;
-	// }
-	// }
-	// } catch (SQLException e) {
-	// e.printStackTrace();
-	// }
-	// return chkId;
-	// }
 }

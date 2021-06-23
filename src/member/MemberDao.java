@@ -138,7 +138,7 @@ public class MemberDao {
 		PreparedStatement pstmt = null;
 
 		try {
-			// sql문 where절 수정해야함. 현재 임의값
+			// 로그인 아이디를 where절 사용
 			String sql = "update member set name = ?, pw =?, address = ?, phone = ? where id = " +"'"+currentId+"'";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mem.getName());

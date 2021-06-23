@@ -1,4 +1,4 @@
-package member;
+package Sale;
 
 import java.io.DataOutput;
 import java.sql.Connection;
@@ -12,13 +12,10 @@ import java.util.Scanner;
 
 public class SaleManager {
 
-
-
 	SaleDao dao;
 	Scanner scanner;
 
-
-	SaleManager(SaleDao dao){
+	public SaleManager(SaleDao dao){
 		this.dao = dao;
 		scanner= new Scanner(System.in);
 	}
