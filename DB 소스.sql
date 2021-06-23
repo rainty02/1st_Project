@@ -39,13 +39,13 @@ insert into member (memcode, name, id, pw, address, phone, point) values (member
 
 -- sale 값
 
-insert into sale(salecode, sname, price,saledate, id) values (sale_salecode_seq.nextval, 'latte', 4600, '21/06/21', 'a');
-insert into sale(salecode, sname, price,saledate, id) values (sale_salecode_seq.nextval, 'salad', 5000, '21/06/21', 'a');
-insert into sale(salecode, sname, price,saledate, id) values (sale_salecode_seq.nextval, 'cake', 5500, '21/06/22', 'b');
-insert into sale(salecode, sname, price,saledate, id) values (sale_salecode_seq.nextval, 'Amerciano', 4100, '21/06/22', 'a');
-insert into sale(salecode, sname, price, id) values(sale_salecode_seq.nextval, 'americano', 4100, 'a');
-insert into sale(salecode, sname, price, id) values (sale_salecode_seq.nextval, 'latte', 4600, 'c');
-insert into sale(salecode, sname, price, id) values (sale_salecode_seq.nextval, 'sandwich', 6200, 'a');
+insert into sale(salecode, sname, price,saledate, id) values (sale_sq.nextval, 'latte', 4600, '21/06/21', 'a');
+insert into sale(salecode, sname, price,saledate, id) values (sale_sq.nextval, 'salad', 5000, '21/06/21', 'a');
+insert into sale(salecode, sname, price,saledate, id) values (sale_sq.nextval, 'cake', 5500, '21/06/22', 'b');
+insert into sale(salecode, sname, price,saledate, id) values (sale_sq.nextval, 'Amerciano', 4100, '21/06/22', 'a');
+insert into sale(salecode, sname, price, id) values (sale_sq.nextval, 'americano', 4100, 'a');
+insert into sale(salecode, sname, price, id) values (sale_sq.nextval, 'latte', 4600, 'c');
+insert into sale(salecode, sname, price, id) values (sale_sq.nextval, 'sandwich', 6200, 'a');
 
 select * from member;
 select * from sale;
