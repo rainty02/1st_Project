@@ -75,7 +75,7 @@ insert into menu(menucode, mname, price) values (menu_sq.nextval, 'latte', 4700)
 insert into menu(menucode, mname, price) values (menu_sq.nextval, 'sandwich', 4800);
 insert into menu(menucode, mname, price) values (menu_sq.nextval, 'bagel', 2300);
 insert into menu(menucode, mname, price) values (menu_sq.nextval, 'cake', 4800);
-insert into menu(mname, price) values (menu_sq.nextval, 'cake', 4800);
+insert into menu(menucode, mname, price) values (menu_sq.nextval, 'cake', 4800);
 
 create table menu (
 menucode integer default menu_sq.nextval constraint menu_PK primary key,
