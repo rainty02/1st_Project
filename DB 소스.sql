@@ -77,12 +77,3 @@ insert into menu(menucode, mname, price) values (menu_sq.nextval, 'bagel', 2300)
 insert into menu(menucode, mname, price) values (menu_sq.nextval, 'cake', 4800);
 insert into menu(menucode, mname, price) values (menu_sq.nextval, 'cake', 4800);
 
-create table menu (
-menucode integer default menu_sq.nextval constraint menu_PK primary key,
-mname varchar2(50) not null,
-price number(10) not null
-);
-
-insert into memu (menucode, mname, price) values (memu_sq.nextval, ?, ?);
-
-select * from menu;
