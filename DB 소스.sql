@@ -14,7 +14,7 @@ salecode integer constraint sale_PK primary key,
 sname varchar2(50) not null,
 price integer not null,
 saledate date default sysdate,
-id varchar2(50) constraint sale_FK references member(id)
+id varchar2(50) constraint sale_FK references member(id) on delete cascade
 );
 -- member 시퀀스
 create sequence member_sq
