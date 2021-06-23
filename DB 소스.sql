@@ -20,18 +20,35 @@ id varchar2(50) constraint sale_FK references member(id)
 create sequence member_sq
 start with 1;
 
+-- sale 시퀀스
+create sequence sale_sq
+start with 1;
+
 -- member 전체
 select * from member;
 
 -- member 값
 -- id는 a,b,c순
 -- 비밀번호는 1234 통일
-insert into member (memcode, name, id, pw, address, phone) values (member_sq.nextval, '김은선', 'a', '1234', '서울', '01012345678');
-insert into member (memcode, name, id, pw, address, phone) values (member_sq.nextval, '위세라', 'b', '1234', '서울', '01012345678');
-insert into member (memcode, name, id, pw, address, phone) values (member_sq.nextval, '이윤성', 'c', '1234', '서울', '01012345678');
-insert into member (memcode, name, id, pw, address, phone) values (member_sq.nextval, '이현우', 'd', '1234', '서울', '01012345678');
-insert into member (memcode, name, id, pw, address, phone) values (member_sq.nextval, '박지성', 'e', '1234', '서울', '01012345678');
-insert into member (memcode, name, id, pw, address, phone) values (member_sq.nextval, '이강인', 'f', '1234', '서울', '01012345678');
+insert into member (memcode, name, id, pw, address, phone, point) values (member_sq.nextval, '김은선', 'a', '1234', '서울', '01012345678', 1000);
+insert into member (memcode, name, id, pw, address, phone, point) values (member_sq.nextval, '위세라', 'b', '1234', '서울', '01012345678', 1500);
+insert into member (memcode, name, id, pw, address, phone, point) values (member_sq.nextval, '이윤성', 'c', '1234', '서울', '01012345678', 2000);
+insert into member (memcode, name, id, pw, address, phone, point) values (member_sq.nextval, '이현우', 'd', '1234', '서울', '01012345678', 5000);
+insert into member (memcode, name, id, pw, address, phone, point) values (member_sq.nextval, '박지성', 'e', '1234', '서울', '01012345678', 9000);
+insert into member (memcode, name, id, pw, address, phone, point) values (member_sq.nextval, '이강인', 'f', '1234', '서울', '01012345678', 4000);
+
+-- sale 값
+
+insert into sale(salecode, sname, price,saledate, id) values (sale_salecode_seq.nextval, 'latte', 4600, '21/06/21', 'a');
+insert into sale(salecode, sname, price,saledate, id) values (sale_salecode_seq.nextval, 'salad', 5000, '21/06/21', 'a');
+insert into sale(salecode, sname, price,saledate, id) values (sale_salecode_seq.nextval, 'cake', 5500, '21/06/22', 'b');
+insert into sale(salecode, sname, price,saledate, id) values (sale_salecode_seq.nextval, 'Amerciano', 4100, '21/06/22', 'a');
+insert into sale(salecode, sname, price, id) values(sale_salecode_seq.nextval, 'americano', 4100, 'a');
+insert into sale(salecode, sname, price, id) values (sale_salecode_seq.nextval, 'latte', 4600, 'c');
+insert into sale(salecode, sname, price, id) values (sale_salecode_seq.nextval, 'sandwich', 6200, 'a');
+
+select * from member;
+select * from sale;
 
 -- 커밋
 commit;
