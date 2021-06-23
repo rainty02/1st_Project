@@ -1,7 +1,7 @@
 -- member 테이블
 create table member (
 memcode integer constraint mem_PK primary key,
-name varchar2(50) unique not null,
+name varchar2(50) not null,
 id varchar2(50) unique not null,
 pw varchar2(50) not null,
 address varchar2(255),
@@ -52,4 +52,26 @@ select * from sale;
 
 -- 커밋
 commit;
+
+
+
+
+-------------------------------------------------------------------------
+
+-- 메뉴 DB
+create table menu (
+menucode integer constraint menu_PK primary key,
+mname varchar2(50) not null,
+price number(10) not null
+);
+
+-- 메뉴 시퀀스
+create sequence menu_sq
+start with 1;
+
+insert into menu(menucode, mname, price) values (menu_sq.nextval, 'americano', 4200);
+insert into menu(menucode, mname, price) values (menu_sq.nextval, 'latte', 4700);
+insert into menu(menucode, mname, price) values (menu_sq.nextval, 'sandwich', 4800);
+insert into menu(menucode, mname, price) values (menu_sq.nextval, 'bagel', 2300);
+insert into menu(menucode, mname, price) values (menu_sq.nextval, 'cake', 4800);
 
