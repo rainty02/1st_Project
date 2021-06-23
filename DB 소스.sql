@@ -61,7 +61,7 @@ commit;
 
 -- 메뉴 DB
 create table menu (
-menucode integer default menu_sq.nextval constraint menu_PK primary key,
+menucode integer constraint menu_PK primary key,
 mname varchar2(50) not null,
 price number(10) not null
 );
@@ -83,5 +83,6 @@ mname varchar2(50) not null,
 price number(10) not null
 );
 
-insert into memu (menucode, mname, price) values (memu_sq.nextval, ?, ?)
+insert into memu (menucode, mname, price) values (memu_sq.nextval, ?, ?);
 
+select * from menu;
