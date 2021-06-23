@@ -46,6 +46,7 @@ insert into sale(salecode, sname, price,saledate, id) values (sale_sq.nextval, '
 insert into sale(salecode, sname, price, id) values (sale_sq.nextval, 'americano', 4100, 'a');
 insert into sale(salecode, sname, price, id) values (sale_sq.nextval, 'latte', 4600, 'c');
 insert into sale(salecode, sname, price, id) values (sale_sq.nextval, 'sandwich', 6200, 'a');
+insert into sale(salecode, sname, price, id) values (sale_sq.nextval, 'sandwich', 6200, 'a');
 
 select * from member;
 select * from sale;
@@ -60,7 +61,7 @@ commit;
 
 -- 메뉴 DB
 create table menu (
-menucode integer constraint menu_PK primary key,
+menucode integer default menu_sq.nextval constraint menu_PK primary key,
 mname varchar2(50) not null,
 price number(10) not null
 );
@@ -74,4 +75,13 @@ insert into menu(menucode, mname, price) values (menu_sq.nextval, 'latte', 4700)
 insert into menu(menucode, mname, price) values (menu_sq.nextval, 'sandwich', 4800);
 insert into menu(menucode, mname, price) values (menu_sq.nextval, 'bagel', 2300);
 insert into menu(menucode, mname, price) values (menu_sq.nextval, 'cake', 4800);
+insert into menu(mname, price) values (menu_sq.nextval, 'cake', 4800);
+
+create table menu (
+menucode integer default menu_sq.nextval constraint menu_PK primary key,
+mname varchar2(50) not null,
+price number(10) not null
+);
+
+insert into memu (menucode, mname, price) values (memu_sq.nextval, ?, ?)
 
