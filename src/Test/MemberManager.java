@@ -154,6 +154,7 @@ public class MemberManager {
 				int result = dao.deleteMem(con, currentId);
 				if (result > 0) {
 					System.out.println("탈퇴되었습니다.");
+					System.out.println("이용해주셔서 감사합니다.");
 				} else {
 					System.out.println("오류가 발생하여 탈퇴실패하였습니다.");
 				}
