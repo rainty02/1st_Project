@@ -1,0 +1,62 @@
+1. 멤버 (회원, 관리자용)
+
+ 멤버 클래스 // 멤버값 저장
+int memcode // 회원값
+String name // 회원 이름
+String id // 회원 아이디
+String pw // 회원 비밀번호
+String address // 회원 주소
+String phone // 회원 전화번호
+int point // 회원 포인트
+- 생성자
+- getter, setter
+- toString 
+
+멤버 Dao // 쿼리문 전달, 반환
+- getList(Connection con) : 전체 데이터 반환(ArrayList)
+- getList(Connection con, String currentId): 로그인된 회원정보 반환(ArrayList)
+- insertMem(Connection con, Member mem) : 멤버 데이터 추가(int)
+- editMem(Connection con, Member mem, String currentId) : 멤버 데이터 수정(int)
+- deleteMem(Connection con, String currentId): 멤버 데이터 삭제(int)
+
+멤버 Manager // Dao 반환값 출력
+- memList() :  전체 회원정보 리스트 출력(관리자용)
+- myInfo(String currentId) : 내 정보 출력(회원용)
+- memAdd() : 멤버 데이터 입력(회원가입)
+- chKOverlap() : 아이디 중복체크, 아이디 반환(회원가입에서 사용)
+- memEdit(String currentId) : 정보 수정(회원용)
+- memDel(String currentId) : 회원 탈퇴(회원용)
+
+
+
+
+2. 메뉴 (관리자용)
+
+메뉴 클래스 // 메뉴값 저장
+int menuCode // 메뉴값
+String mname // 메뉴이름
+int price // 메뉴가격
+- 생성자
+- getter, setter
+- toString 
+
+메뉴 Dao // 쿼리문 전달, 반환
+- getList(Connection con) : 메뉴 전체리스트 반환(ArrayList)
+- insertMenu(Connection con, Menu menu) : 메뉴 데이터 추가(int)
+- editMenu(Connection con, Menu menu) : 메뉴 데이터 수정(int)
+- deleteMenu(Connection con, int menuCode) : 메뉴 데이터 삭제(int)
+
+메뉴 Manager // Dao 반환값 출력
+- void menuList() : 메뉴 전체 리스트 출력
+- void menuAdd() : 메뉴 데이터 추가
+- void menuEdit() : 메뉴 데이터 수정
+- void menuDel() : 메뉴 데이터 삭제
+
+
+
+3. 로그인 (회원)
+
+ 로그인 클래스 // 로그인
+public static String currentId : 로그인한 회원 아이디
+- chkLogin() : 입력된 아이디, 비밀번호 확인 후 static currentId로 입력된 아이디 전달
+
