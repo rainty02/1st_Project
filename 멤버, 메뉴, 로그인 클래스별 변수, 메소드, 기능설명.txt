@@ -18,12 +18,14 @@ int point // 회원 포인트
 - insertMem(Connection con, Member mem) : 멤버 데이터 추가(int)
 - editMem(Connection con, Member mem, String currentId) : 멤버 데이터 수정(int)
 - deleteMem(Connection con, String currentId): 멤버 데이터 삭제(int)
+- close() : pstmt 닫기
 
 멤버 Manager // Dao 반환값 출력
 - memList() :  전체 회원정보 리스트 출력(관리자용)
 - myInfo(String currentId) : 내 정보 출력(회원용)
+- chKOverlap() : 아이디 중복체크, 아이디 반환(회원가입)
+- chkPw(String pw) : 패스워드 일치확인(회원가입)
 - memAdd() : 멤버 데이터 입력(회원가입)
-- chKOverlap() : 아이디 중복체크, 아이디 반환(회원가입에서 사용)
 - memEdit(String currentId) : 정보 수정(회원용)
 - memDel(String currentId) : 회원 탈퇴(회원용)
 
@@ -45,6 +47,7 @@ int price // 메뉴가격
 - insertMenu(Connection con, Menu menu) : 메뉴 데이터 추가(int)
 - editMenu(Connection con, Menu menu) : 메뉴 데이터 수정(int)
 - deleteMenu(Connection con, int menuCode) : 메뉴 데이터 삭제(int)
+- close() : pstmt 닫기
 
 메뉴 Manager // Dao 반환값 출력
 - void menuList() : 메뉴 전체 리스트 출력
