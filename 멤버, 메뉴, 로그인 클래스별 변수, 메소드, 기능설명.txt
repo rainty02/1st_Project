@@ -59,4 +59,4 @@ int price // 메뉴가격
  로그인 클래스 // 로그인
 public static String currentId : 로그인한 회원 아이디
 - chkLogin() : 입력된 아이디, 비밀번호 확인 후 static currentId로 입력된 아이디 전달
-
+- logout() : static currentId = null;
