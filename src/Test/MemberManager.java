@@ -15,9 +15,7 @@ public class MemberManager {
 
 	private MemberDao dao;
 	private Scanner sc;
-//	private String currentId;
-//	Login login = new Login(MemberDao.getInstance());
-//	private String currentId = login.currentId;
+
 	
 	// 객체 생성
 	private Connection con = null;
@@ -72,10 +70,55 @@ public class MemberManager {
 			e.printStackTrace();
 		}
 	}
+	
+	// 아이디 중복체크(회원가입에서 사용)
+	String chKOverlap() {
+		ArrayList<Member> mem = new ArrayList<>();
+		String id = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-	// 데이터 입력
+		try {
+			con = DriverManager.getConnection(jdbcUrl, user, pw);
+			mem = dao.getList(con);
+
+			while (true) {
+				System.out.print("아이디를 입력하세요 > ");
+				id = sc.nextLine().trim();
+				pstmt = con.prepareStatement("select id from member where id = ?");
+				pstmt.setString(1, id);
+				
+				// 실행
+				rs = pstmt.executeQuery(); 
+				if (!rs.next()) {
+					break;
+				} else {
+					System.out.println("중복된 아이디입니다. 다시 입력하세요. ");
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
+	
+	// 회원가입시 비밀번호 일치여부
+	boolean chkPw(String pw) {
+		boolean result = true;
+		System.out.print("비밀번호를 한번 더 입력하세요 > ");
+		String chkPassword = sc.nextLine().trim();
+		if (!pw.equals(chkPassword)) {
+			System.out.println("비밀번호가 일치하지 않습니다.");
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
+	}
+	
+
+	// 멤버 데이터 입력(회원가입)
 	void memAdd() {
-
 		try {
 			con = DriverManager.getConnection(jdbcUrl, user, pw);
 			System.out.println("환영합니다.");
@@ -85,9 +128,16 @@ public class MemberManager {
 
 			// 아이디 중복체크		
 			String id = chKOverlap();
+			String password = null;
+			boolean run = true;
 			
+			// 비밀번호 일치체크
+			while(run) {
 			System.out.print("비밀번호를 입력하세요 > ");
-			String password = sc.nextLine().trim();
+			password = sc.nextLine().trim();
+			run = chkPw(password);
+			}
+			
 			System.out.print("이름를 입력하세요 > ");
 			String cafename = sc.nextLine().trim();
 			System.out.print("주소를 입력하세요 > ");
@@ -155,6 +205,7 @@ public class MemberManager {
 				if (result > 0) {
 					System.out.println("탈퇴되었습니다.");
 					System.out.println("이용해주셔서 감사합니다.");
+					Login.logout();
 				} else {
 					System.out.println("오류가 발생하여 탈퇴실패하였습니다.");
 				}
@@ -163,70 +214,5 @@ public class MemberManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	// 로그인
-//	void chkLogin() {
-//		ArrayList<Member> mem = new ArrayList<>();
-//		HashMap<String, String> map = new HashMap<>();
-//
-//		try {
-//			con = DriverManager.getConnection(jdbcUrl, user, pw);
-//			mem = dao.getList(con);
-//			for (int i = 0; i < mem.size(); i++) {
-//				map.put(mem.get(i).getId(), mem.get(i).getPw());
-//			}
-//			while (true) {
-//				System.out.println("아이디와 비밀번호를 입력합니다.");
-//				System.out.print("아이디를 입력하세요 > ");
-//				currentId = sc.nextLine().trim();
-//				System.out.print("비밀번호를 입력하세요 > ");
-//				String password = sc.nextLine().trim();
-//				System.out.println();
-//
-//				if (!map.containsKey(currentId)) {
-//					System.out.println("입력하신 아이디는 존재하지 않습니다. 다시 입력하세요.");
-//					continue;
-//				} else {
-//					if (!(map.get(currentId)).equals(password)) {
-//						System.out.println("비밀번호가 일치하지 않습니다. 다시 입력하세요.");
-//					} else {
-//						System.out.println("로그인하셨습니다.");
-//						break;
-//					}
-//				}
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
-
-	// 아이디 중복
-	String chKOverlap() {
-		ArrayList<Member> mem = new ArrayList<>();
-		String id = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			con = DriverManager.getConnection(jdbcUrl, user, pw);
-			mem = dao.getList(con);
-
-			while (true) {
-				System.out.print("아이디를 입력하세요 > ");
-				id = sc.nextLine().trim();
-				pstmt = con.prepareStatement("select id from member where id = ?");
-				pstmt.setString(1, id);
-				rs = pstmt.executeQuery(); // 실행
-				if (!rs.next()) {
-					break;
-				} else {
-					System.out.println("중복된 아이디입니다. 다시 입력하세요. ");
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return id;
 	}
 }

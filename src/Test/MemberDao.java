@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class MemberDao {
 
+	private PreparedStatement pstmt = null;
+	
 	private MemberDao() {}
 	
 	static private MemberDao dao = new MemberDao();
@@ -23,7 +25,6 @@ public class MemberDao {
 	ArrayList<Member> getList(Connection con){
 		
 		ArrayList<Member> list = null;
-		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 			
 		try {
@@ -49,13 +50,7 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			if(pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			close();
 		}
 		return list;
 	}
@@ -64,7 +59,6 @@ public class MemberDao {
 	ArrayList<Member> getList(Connection con, String currentId){
 		
 		ArrayList<Member> list = null;
-		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 			
 		try {
@@ -90,13 +84,7 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			if(pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			close();
 		}
 		return list;
 	}
@@ -105,7 +93,6 @@ public class MemberDao {
 	int insertMem(Connection con, Member mem) {
 		
 		int result = 0;
-		PreparedStatement pstmt = null;
 
 		try {
 			String sql = "insert into member (memcode, name, id, pw, address, phone) values (member_sq.nextval, ?, ?, ?, ?, ?)";
@@ -120,13 +107,7 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			if(pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+			close();
 		}
 		return result;						
 	}
@@ -135,7 +116,6 @@ public class MemberDao {
 	int editMem(Connection con, Member mem, String currentId) {
 		
 		int result = 0;		
-		PreparedStatement pstmt = null;
 
 		try {
 			// 로그인 아이디를 where절 사용
@@ -151,25 +131,16 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			if(pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+			close();
 		}
 		return result;
 	}
 	
 	// 데이터 삭제
 	int deleteMem(Connection con, String currentId) {
+		
 		int result = 0;
-		
-		PreparedStatement pstmt = null;
-		
-		
+	
 		try {
 			String sql = "delete from member where id = ?";
 			pstmt = con.prepareStatement(sql);
@@ -180,15 +151,19 @@ public class MemberDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {	
-			if(pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+			close();
 		}
 		return result;				
+	}
+	
+	void close() {
+		if(pstmt != null) {
+			try {
+				pstmt.close();
+				pstmt = null;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
